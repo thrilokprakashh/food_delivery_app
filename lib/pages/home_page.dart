@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -56,7 +56,23 @@ class _HomePageState extends State<HomePage>
             ),
           ),
         ],
-        body: Container(),
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+            ListView.builder(
+              itemBuilder: (context, index) => Text("data"),
+              itemCount: 5,
+            ),
+            ListView.builder(
+              itemBuilder: (context, index) => Text("hi"),
+              itemCount: 5,
+            ),
+            ListView.builder(
+              itemBuilder: (context, index) => Text("hello"),
+              itemCount: 5,
+            ),
+          ],
+        ),
       ),
     );
   }

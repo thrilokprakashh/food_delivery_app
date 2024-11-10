@@ -27,11 +27,11 @@ class MySilverAppBar extends StatelessWidget {
       foregroundColor: Theme.of(context).colorScheme.inversePrimary,
       title: const Text("Sunset Dinner"),
       flexibleSpace: FlexibleSpaceBar(
-        background: child,
-        title: Padding(
+        background: Padding(
           padding: const EdgeInsets.only(bottom: 50.0),
-          child: title,
+          child: child,
         ),
+        title: title,
         centerTitle: true,
         titlePadding: const EdgeInsets.only(top: 0, left: 0, right: 0),
         expandedTitleScale: 1,

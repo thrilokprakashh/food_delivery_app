@@ -18,6 +18,10 @@ class MyTabBar extends StatelessWidget {
           Tab(
             icon: Icon(Icons.settings),
           ),
+          // tab 3
+          Tab(
+            icon: Icon(Icons.person),
+          ),
         ],
       ),
     );
