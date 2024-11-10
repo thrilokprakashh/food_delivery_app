@@ -1,37 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_button.dart';
-import 'package:food_delivery_app/components/my_textField.dart';
-import 'package:food_delivery_app/pages/home_page.dart';
+import 'package:food_delivery_app/components/my_textfield.dart';
 
-class LoginPage extends StatefulWidget {
+class RegistorPage extends StatefulWidget {
   final void Function()? onTap;
-
-  const LoginPage({super.key, this.onTap});
+  const RegistorPage({super.key, this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegistorPage> createState() => _RegistorPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  //text editing controlers
+class _RegistorPageState extends State<RegistorPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
-  //login method
-  void login() {
-    /*
-fill out authentication here...
-    */
-
-    // navigate to home
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-    );
-  }
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +33,7 @@ fill out authentication here...
             const SizedBox(height: 25),
             //message,app
             Text(
-              "Food Delivery App",
+              "Let's create an account for you",
               style: TextStyle(
                   fontSize: 16,
                   color: Theme.of(context).colorScheme.inversePrimary),
@@ -70,12 +53,19 @@ fill out authentication here...
               hintText: "Password",
               obscureText: true,
             ),
+            const SizedBox(height: 10),
+            // confirmpassword textfiled
+            MyTextfield(
+              controller: confirmPasswordController,
+              hintText: "Confirm Password",
+              obscureText: true,
+            ),
             const SizedBox(height: 25),
-            //Sign in button
+            //Sign up button
 
             MyButton(
-              text: "Sign in",
-              onTap: login,
+              text: "Sign Up",
+              onTap: () {},
             ),
             const SizedBox(height: 25),
             // some text's
@@ -83,7 +73,7 @@ fill out authentication here...
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Not a member?",
+                  "Already have an account",
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary),
                 ),
@@ -93,7 +83,7 @@ fill out authentication here...
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Text(
-                    "Registor now",
+                    "Login now",
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.inversePrimary,
                         fontWeight: FontWeight.bold),
