@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_current_location.dart';
 import 'package:food_delivery_app/components/my_discription_box.dart';
 import 'package:food_delivery_app/components/my_drawer.dart';
+import 'package:food_delivery_app/components/my_food_tile.dart';
 import 'package:food_delivery_app/components/my_silver_app_bar.dart';
 import 'package:food_delivery_app/components/my_tab_bar.dart';
 import 'package:food_delivery_app/models/food.dart';
 import 'package:food_delivery_app/models/restaurant.dart';
+import 'package:food_delivery_app/pages/food_page.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,13 +45,26 @@ class _HomePageState extends State<HomePage>
 
   List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
     return FoodCategory.values.map((category) {
+      // get category food
       List<Food> categoryMenu = _filterMenuByCategory(category, fullMenu);
       return ListView.builder(
         padding: EdgeInsets.zero,
         itemCount: categoryMenu.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(categoryMenu[index].name),
+          // get Individual food
+          final food = categoryMenu[index];
+
+          // return food UI
+          return MyFoodTile(
+            food: food,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FoodPage(food: food),
+                ),
+              );
+            },
           );
         },
       );
